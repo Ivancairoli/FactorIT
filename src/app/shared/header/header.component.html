@@ -1,0 +1,8 @@
+<div class="container-header">
+    <div class="image-interview" (click)="redirectTo('')"></div>
+    <div class="login">
+        <p class="counter" style="color: white">{{counter}}</p>
+        <p-button icon="pi pi-shopping-cart" [rounded]="true" class="cart" (click)="redirectTo('cart')"></p-button>
+        <p-button icon="pi pi-user" [rounded]="true" [text]="true" [raised]="true" severity="info" class="login-button" (click)="redirectTo('login')"></p-button>
+    </div>
+</div>

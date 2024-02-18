@@ -1,0 +1,17 @@
+<!-- <div class="container-nav">
+    <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText [(ngModel)]="value" />
+    </span>
+</div> -->
+
+<div class="container-nav" *ngIf="!mostrarComponente">
+
+    <div class="card flex flex-wrap justify-content-center gap-3">
+        <span class="p-input-icon-left span">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText [(ngModel)]="value" (ngModelChange)="onCambioTexto(value)" placeholder="Encuentra lo que buscas" (click)="alert()"/>
+        </span>
+    </div>
+
+</div>

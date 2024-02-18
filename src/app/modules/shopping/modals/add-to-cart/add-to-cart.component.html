@@ -1,0 +1,42 @@
+<div class="modal-top">
+  <h2 mat-dialog-title><b>{{data.name}}</b></h2>
+  <div class="inner-modal-top">
+    <p>Disponibles: {{data.quantity}}</p>
+    <p><b> ${{data.price | number}}</b></p>
+  </div>
+</div>
+<mat-dialog-content class="mat-typography">
+
+  <div class="content">
+
+    <div class="container-image">
+
+      <img [src]="data.image" alt="" class="image">
+
+    </div>
+
+    <div class="container-description">
+      <div>
+        <p style="margin: 20px;">{{data.description}}</p>
+      </div>
+      <div>
+        <p style="text-align: center;">Cantidad</p>
+        <p-inputNumber [(ngModel)]="value" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical" decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" class="cant" [min]="0" [max]="data.quantity" (ngModelChange)="onValueChange($event)"></p-inputNumber>
+        <p style="text-align: center; margin-top: 10px;"><b>Precio: ${{data.price | number}}</b></p>
+      </div>
+    
+      </div>
+
+    <div>
+      
+    </div>
+  </div>
+
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial color="primary" (click)="addToCart()" [disabled]="data.quantity === 0 || value === 0">Agregar al carrito</button>
+</mat-dialog-actions>

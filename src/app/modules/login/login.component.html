@@ -1,0 +1,16 @@
+<div class="container-login">
+    <div class="login">
+        <div class="title">
+            <h2>Inicia Sesión</h2>
+        </div>
+
+        <div >
+            <form [formGroup]="formGroup" class="data"> 
+                <input type="text" pInputText formControlName="username" placeholder="Usuario"/>
+                <input type="password" pInputText fromControlName="password" placeholder="Contraseña">
+                <p-button label="Submit" [loading]="loading" (onClick)="load()" class="btn-submit" width="200px"></p-button>
+            </form>
+        </div>
+
+    </div>
+</div>

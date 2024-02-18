@@ -1,0 +1,30 @@
+<div class="container-cart">
+    <h1>Mi carrito</h1>
+    <p-button label="Eliminar Carrito" severity="danger" class="btn" (click)="deleteCart()" *ngIf="productsInCart.length > 0"></p-button> 
+    <div class="cart">
+
+        <div *ngIf="productsInCart.length === 0" class="no-content">
+            <h1>¡Aun no hay nada! Vamos a <b style="color: orange; cursor: pointer;" (click)="redirect()">comprar</b></h1>
+        </div>
+
+        <div class="item" *ngFor="let product of productsInCart">
+            <div class="item-image">
+                <img [src]="product.image" alt="">
+            </div>
+            <div class="item-info">
+                <h3>{{product.name}}</h3>
+                <p>Cantidad: {{product.selectedQuantity}}</p>
+                <p>Total: ${{product.price}} c/u</p>
+            </div>
+            <div class="data-buttons">
+                <p-button icon="pi pi-trash" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="login-button" (click)="deleteElement(product)"></p-button>
+            </div>
+        </div>
+
+        <div class="panel" *ngIf="productsInCart.length > 0">
+            <p style="text-align: center; margin-top: 20px;">Total: ${{total | number}}</p>
+            <p-button label="Finalizar Compra" severity="success" class="btn" (click)="buy()"></p-button>
+        </div>
+
+    </div>
+</div>

@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Estilizar la barra de desplazamiento completa */
+::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra de desplazamiento */
+    height: 5px;
+}
+
+/* Estilizar el fondo de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color de fondo */
+    border-radius: 5px;
+
+}
+
+/* Estilizar el control deslizante de la barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+    // background: #b1b0b0; /* Color del deslizador */
+    background: rgb(75, 74, 74);
+    border-radius: 5px;
+
+}
+
+/* Estilizar el control deslizante al pasar el mouse */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color del deslizador al pasar el mouse */
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
