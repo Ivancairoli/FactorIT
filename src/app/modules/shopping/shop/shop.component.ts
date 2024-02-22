@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Product } from '../models/Product.model';
-import { ProductService } from '../services/product.service';
+import { Product } from '../../models/Product.model';
+import { ProductService } from '../../services/product.service';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { AddToCartComponent } from '../modals/add-to-cart/add-to-cart.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-shop',
@@ -18,7 +19,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     products!: Product[];
     filtroTexto: string = '';
 
-    constructor(private productService: ProductService, private dialog: MatDialog) {
+    constructor(private productService: ProductService, private dialog: MatDialog, private authService: AuthService) {
         this.getProducts = this.productService.getProducts().subscribe(res => {
             this.products = res.slice(0, 10)
         })
@@ -30,7 +31,8 @@ export class ShopComponent implements OnInit, OnDestroy {
         this.productService.currentFiltroTexto.subscribe(filtroTexto => {
             this.filtroTexto = filtroTexto;
             this.filtrarProductos('', filtroTexto);
-          });
+        });
+
     }
 
     ngOnDestroy(): void {

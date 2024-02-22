@@ -1,0 +1,18 @@
+<h2 mat-dialog-title style="text-align: center;">Información</h2>
+<div class="content-container">
+  <div class="information">
+    <img *ngIf="datosUsuario.membership === 'VIP'" src="../../../assets/Elon.jpg" class="img-logged" (click)="openDialogCloseSession()">
+    <img *ngIf="datosUsuario.membership === 'normal'" src="../../../assets/noRegistrado.png" class="img-logged" (click)="openDialogCloseSession()">
+    <p>Usuario: {{datosUsuario.name}}</p>
+    <p>Membresía: {{datosUsuario.membership}}</p>
+  </div>
+
+  <div class="mis-compras">
+    <button mat-raised-button color="primary" (click)="compras()">Mis compras</button>
+  </div>
+</div>
+
+<mat-dialog-actions align="end" style="padding: 30px;">
+  <button mat-raised-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="true" cdkFocusInitial (click)="CerrarSesion()">Cerrar Sesión</button>
+</mat-dialog-actions>

@@ -1,0 +1,22 @@
+<div class="title-detail">
+    <h1 style="text-align: center; margin-top: 40px;">Compras Realizadas Hoy</h1>
+</div>
+
+<div class="compras-container">
+
+    <div class="detail-container">
+        <div class="detail" *ngFor="let detalle of comprasHoy">
+            <p>Fecha de compra: {{ detalle.fecha | date }}</p>
+            <p>${{ detalle.monto | number }}</p>
+        </div>
+
+        <div *ngIf="comprasHoy.length === 0" style="margin: 50px;">
+            <h2>Parece que no has comprado nada el día de hoy</h2>
+        </div>
+    </div>
+
+</div>
+
+<mat-dialog-actions align="end" style="padding: 30px;">
+    <button mat-raised-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

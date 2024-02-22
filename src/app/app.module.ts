@@ -20,6 +20,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { BuyModalComponent } from './modules/cart/buy-modal/buy-modal.component';
+import { CalendarModule } from 'primeng/calendar';
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+import { CloseSessionComponent } from './shared/header/close-session/close-session.component';
+import { ComprasComponent } from './shared/header/compras/compras.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +38,8 @@ import { BuyModalComponent } from './modules/cart/buy-modal/buy-modal.component'
     LoginComponent,
     AddToCartComponent,
     BuyModalComponent,
+    CloseSessionComponent,
+    ComprasComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,10 +52,14 @@ import { BuyModalComponent } from './modules/cart/buy-modal/buy-modal.component'
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
-    InputNumberModule
+    InputNumberModule,
+    CalendarModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
+  exports: [AngularFireModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

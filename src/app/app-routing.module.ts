@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShopComponent } from './modules/shopping/shop/shop.component';
 import { CartComponent } from './modules/cart/cart.component';
 import { LoginComponent } from './modules/login/login.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
-  {path: '', component: ShopComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'cart', component: CartComponent},
-  {path: '**', component: ShopComponent}
+  { path: 'shop', component: ShopComponent, canActivate: [AuthGuard],},
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard],},
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard],},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({

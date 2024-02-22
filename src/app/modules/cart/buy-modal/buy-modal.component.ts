@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-buy-modal',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./buy-modal.component.scss']
 })
 export class BuyModalComponent {
+
+  constructor(public dialogRef: MatDialogRef<BuyModalComponent>) {}
 
 }

@@ -1,5 +1,19 @@
+.outter-content{
+    width: 100%; 
+    height: 100%;
+    padding: 5px;
+    background-color: #ebebeb;
+}
+
 .content{
     width: 85%;
-    height: 85vh;
-    margin: 0 auto;
+    height: 100%;
+    // background-color: red;
+    margin: 40px auto;
+}
+
+@media (min-width:1024px) and (max-width:1366px) {
+    .outter-content {
+        padding: 0 !important;
+    }
 }

@@ -1,16 +1,26 @@
+<div class="container-link-tienda">
+    <p-button label="Visita la tienda" (click)="redirectTo('shop')" class="btn-submit" styleClass="p-button-warning"></p-button>
+</div>
+
 <div class="container-login">
     <div class="login">
         <div class="title">
-            <h2>Inicia Sesión</h2>
+            <h2 *ngIf="!inicioSesion">Inicia Sesión</h2>
+            <h2 *ngIf="inicioSesion">Cambiar Sesión</h2>
         </div>
 
         <div >
             <form [formGroup]="formGroup" class="data"> 
                 <input type="text" pInputText formControlName="username" placeholder="Usuario"/>
-                <input type="password" pInputText fromControlName="password" placeholder="Contraseña">
-                <p-button label="Submit" [loading]="loading" (onClick)="load()" class="btn-submit" width="200px"></p-button>
+                <input type="password" pInputText formControlName="password" placeholder="Contraseña">
+                <p-button label="Submit" type="submit" (click)="login()" class="btn-submit" width="200px"></p-button>
             </form>
         </div>
 
+
+
     </div>
+    <!-- <div>
+        <button (click)="Agregar()">AGREGAR</button>
+    </div> -->
 </div>

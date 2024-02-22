@@ -3,6 +3,7 @@
     <div class="login">
         <p class="counter" style="color: white">{{counter}}</p>
         <p-button icon="pi pi-shopping-cart" [rounded]="true" class="cart" (click)="redirectTo('cart')"></p-button>
-        <p-button icon="pi pi-user" [rounded]="true" [text]="true" [raised]="true" severity="info" class="login-button" (click)="redirectTo('login')"></p-button>
-    </div>
+        <p-button *ngIf="!inicioSesion" icon="pi pi-user" [rounded]="true" [text]="true" [raised]="true" severity="info" class="login-button" (click)="redirectTo('login')"></p-button>
+        <img *ngIf="inicioSesion && userInfo.membership === 'VIP'" src="../../../assets/Elon.jpg" class="img-logged" (click)="openDialogCloseSession()">
+        <img *ngIf="inicioSesion && userInfo.membership === 'normal'" src="../../../assets/noRegistrado.png" class="img-logged" (click)="openDialogCloseSession()">
 </div>

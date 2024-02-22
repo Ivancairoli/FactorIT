@@ -2,16 +2,19 @@
   <h2 mat-dialog-title><b>{{data.name}}</b></h2>
   <div class="inner-modal-top">
     <p>Disponibles: {{data.quantity}}</p>
-    <p><b> ${{data.price | number}}</b></p>
+    <!-- <p><b> ${{data.price | number}}</b></p> -->
   </div>
 </div>
-<mat-dialog-content class="mat-typography">
 
   <div class="content">
 
-    <div class="container-image">
+    <div class="top-content">
 
-      <img [src]="data.image" alt="" class="image">
+      <div class="container-image">
+
+        <img [src]="data.image" alt="" class="image">
+
+      </div>
 
     </div>
 
@@ -32,10 +35,6 @@
     </div>
   </div>
 
-
-
-
-</mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancelar</button>
   <button mat-button [mat-dialog-close]="true" cdkFocusInitial color="primary" (click)="addToCart()" [disabled]="data.quantity === 0 || value === 0">Agregar al carrito</button>

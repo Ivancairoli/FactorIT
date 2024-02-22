@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Product } from '../../models/Product.model';
+import { Product } from '../../../models/Product.model';
 import { Observable } from 'rxjs';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../../services/product.service';
 
 @Component({
   selector: 'app-add-to-cart',

@@ -8,8 +8,6 @@
 
         <!--Los titulos podría generalizarlos en base al servicio pero genero 2 a modo de prueba (Electronica y Tecnologia)-->
 
-        <h3>Electronica</h3>
-
         <div class="container-card">
         
             <div class="card" *ngFor="let product of filtrarProductos('Electronica')">
@@ -34,7 +32,7 @@
                     </div>
 
                     <div>
-                        <button pButton icon="pi pi-plus" class="md:align-self-end mb-2 p-button-rounded" (click)="openModal(product)"></button>
+                        <button pButton style="height: 35px; padding: 3px;" (click)="openModal(product)">Comprar</button>
                     </div>
                 </div>
 
@@ -47,8 +45,6 @@
     <!--2-->
 
     <div class="container-products">
-
-        <h3>Tecnología</h3>
 
         <div class="container-card">
         
@@ -74,7 +70,7 @@
                     </div>
 
                     <div>
-                        <button pButton icon="pi pi-plus" class="md:align-self-end mb-2 p-button-rounded" (click)="openModal(product)"></button>
+                        <button pButton style="height: 35px; padding: 3px;" (click)="openModal(product)">Comprar</button>
                     </div>
                 </div>
 

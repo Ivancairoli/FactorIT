@@ -1,30 +1,69 @@
-<div class="container-cart">
-    <h1>Mi carrito</h1>
-    <p-button label="Eliminar Carrito" severity="danger" class="btn" (click)="deleteCart()" *ngIf="productsInCart.length > 0"></p-button> 
-    <div class="cart">
+<div class="container">
 
-        <div *ngIf="productsInCart.length === 0" class="no-content">
-            <h1>¡Aun no hay nada! Vamos a <b style="color: orange; cursor: pointer;" (click)="redirect()">comprar</b></h1>
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <h1>Mi carrito</h1>
+
+        <div>
+            <p-button label="Eliminar Carrito" severity="danger" class="btn" (click)="deleteCart()" *ngIf="productsInCart.length > 0"></p-button> 
         </div>
 
-        <div class="item" *ngFor="let product of productsInCart">
-            <div class="item-image">
-                <img [src]="product.image" alt="">
-            </div>
-            <div class="item-info">
-                <h3>{{product.name}}</h3>
-                <p>Cantidad: {{product.selectedQuantity}}</p>
-                <p>Total: ${{product.price}} c/u</p>
-            </div>
-            <div class="data-buttons">
-                <p-button icon="pi pi-trash" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="login-button" (click)="deleteElement(product)"></p-button>
-            </div>
+        <div class="calendar">
+            <label for="buttondisplay"> Fecha </label>
+            <p-calendar [(ngModel)]="date1" [showIcon]="true" inputId="buttondisplay" (ngModelChange)="onDateChange($event)"></p-calendar>
         </div>
 
-        <div class="panel" *ngIf="productsInCart.length > 0">
-            <p style="text-align: center; margin-top: 20px;">Total: ${{total | number}}</p>
-            <p-button label="Finalizar Compra" severity="success" class="btn" (click)="buy()"></p-button>
-        </div>
+    </div>
 
+    <div class="container-cart">
+
+
+        <div class="cart">
+
+            <div *ngIf="productsInCart.length === 0" class="no-content">
+                <h1>¡Aún no hay nada! Vamos a <b style="color: orange; cursor: pointer;" (click)="redirect()">comprar</b></h1>
+            </div>
+
+            <div class="container-items">
+
+                <div class="item" *ngFor="let product of productsInCart">
+                    <div class="item-image">
+                        <img [src]="product.image" alt="">
+                    </div>
+                    <div class="item-info">
+                        <h3>{{product.name}}</h3>
+                        <p>Cantidad: {{product.selectedQuantity}}</p>
+                        <p>Precio: ${{product.price | number}} c/u</p>
+                    </div>
+                    <div class="data-buttons">
+                        <p-button icon="pi pi-trash" [rounded]="true" [text]="true" [raised]="true" severity="danger" class="login-button" (click)="deleteElement(product)"></p-button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel" *ngIf="productsInCart.length > 0">
+                <!--1-->
+                <p style="text-align: center; margin-top: 20px;">Total: ${{total | number}}</p>
+                
+                <p *ngIf="totalSelectedQuantity === 4">Descuento: 25%</p>
+                <p *ngIf="totalSelectedQuantity === 4">Total con descuento: ${{totalDiscount | number}}</p>
+                <!--NO SOY VIP y la fecha es promocional y compre mas de 10-->
+                <p *ngIf="!isVip && promotionalDate && totalSelectedQuantity > 10">Descuento por fecha especial: $300</p>
+                <p *ngIf="!isVip && promotionalDate && totalSelectedQuantity > 10">Total con descuento especial: ${{specialDiscount | number}}</p>
+                <!--NO SOY VIP y la fecha no es promocional y compre mas de 10-->
+                <p *ngIf="!isVip && !promotionalDate && totalSelectedQuantity > 10">Descuento por compra mayor a 10 artículos: $100</p>
+                <p *ngIf="!isVip && !promotionalDate && totalSelectedQuantity > 10">Total con descuento normal: ${{normalDiscount | number}}</p>
+                <!--SOY VIP y la fecha no es promocional y compre mas de 10-->
+                <p *ngIf="isVip && !promotionalDate && totalSelectedQuantity > 10">Descuento por compra mayor a 10 artículos VIP: $500 y bonificación de 1 producto (mas barato)</p>
+                <p *ngIf="isVip && !promotionalDate && totalSelectedQuantity > 10">Total con descuento VIP: ${{vipDiscount | number}}</p>
+                <!--SOY VIP y la fecha es promocional y compre mas de 10-->
+                <p *ngIf="isVip && promotionalDate && totalSelectedQuantity > 10">Descuento por compra mayor a 10 artículos VIP: $500 y bonificación de 1 producto (mas barato)</p>
+                <p *ngIf="isVip && promotionalDate && totalSelectedQuantity > 10">Total con descuento VIP: ${{vipDiscount | number}}</p>
+                
+                <p-button label="Seguir comprando" severity="warn" class="btn" (click)="redirect()"></p-button>
+                <p-button label="Finalizar Compra" severity="success" class="btn" (click)="buy()"></p-button>
+            </div>
+
+        </div>
     </div>
 </div>
